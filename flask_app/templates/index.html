@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dojo Survey</h1>
+        <form action="/create/survey" method="POST">
+            <p>Name:</p>
+            <input type="text" name="name">
+            <p>Dojo Location:</p>
+            <select class="select" name="location" id="location">
+                <option selected>--Select A Location--</option>
+                <option value="Online">Online</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Burbank">Burbank</option>
+                <option value="Bellevue">Bellevue</option>
+            </select>
+            <p>Favorite Language</p>
+            <select class="select" name="language">
+                <option selected>--Select A Language--</option>
+                <option value='C#'>C#</option>
+                <option value="Python">Python</option>
+                <option value="HTML">HTML</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+            </select>
+            <p>Comments:</p>
+            <textarea name="comment" class="form-control"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+        {% with validationErrors = get_flashed_messages() %}
+            {% if validationErrors %}
+                {% for message in validationErrors %}
+                    <p style="color:rgb(202, 0, 0);">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </div>
+</body>
+</html>
