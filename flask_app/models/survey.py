@@ -23,10 +23,10 @@ class Survey:
         if len(survey["name"]) < 2:
             isValid = False
             flash("Name must be at least 2 characers long")
-        if not survey["location"]:
+        if len(survey["location"]) < 1:
             isValid = False
             flash("Location required")
-        if not survey["language"]:
+        if len(survey["languages"]) < 1:
             isValid = False
             flash("Language is required")
         if not survey["comment"]:
@@ -36,7 +36,7 @@ class Survey:
 
     @classmethod
     def addNewSurvey(cls,data):
-        query = "INSERT INTO dojos (name, location, languages, comment) VALUES (%(name)s,%(location)s,%(language)s,%(comment)s);"
+        query = "INSERT INTO dojos (name, location, languages, comment) VALUES (%(name)s,%(location)s,%(languages)s,%(comment)s);"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
     @classmethod

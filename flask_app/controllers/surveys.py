@@ -9,15 +9,15 @@ def index():
 # add survey
 @app.route("/create/survey",methods=["POST"])
 def addSurvey():
-    isValid = survey.Survey.validateSurvey(request.form)
-    if not isValid:
-        return redirect("/")
     newSurvey = {
         "name": request.form["name"],
         "location": request.form["location"],
-        "language": request.form["language"],
+        "languages": request.form["languages"],
         "comment": request.form["comment"]
     }
+    if not survey.Survey.validateSurvey(newSurvey):
+        return redirect("/")
+    
     id = survey.Survey.addNewSurvey(newSurvey)
     if not id:
         flash("Something went wrong")

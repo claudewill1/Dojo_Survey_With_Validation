@@ -15,7 +15,7 @@
             <input type="text" name="name">
             <p>Dojo Location:</p>
             <select class="select" name="location" id="location">
-                <option selected>--Select A Location--</option>
+                <option selected value="">--Select A Location--</option>
                 <option value="Online">Online</option>
                 <option value="Chicago">Chicago</option>
                 <option value="Seattle">Seattle</option>
@@ -23,8 +23,8 @@
                 <option value="Bellevue">Bellevue</option>
             </select>
             <p>Favorite Language</p>
-            <select class="select" name="language">
-                <option selected>--Select A Language--</option>
+            <select class="select" name="languages">
+                <option selected value="">--Select A Language--</option>
                 <option value='C#'>C#</option>
                 <option value="Python">Python</option>
                 <option value="HTML">HTML</option>
@@ -33,7 +33,7 @@
             </select>
             <p>Comments:</p>
             <textarea name="comment" class="form-control"></textarea>
-            <input type="submit" value="Submit">
+            <input class="submitForm" type="submit" value="Submit">
         </form>
         {% with validationErrors = get_flashed_messages() %}
             {% if validationErrors %}
